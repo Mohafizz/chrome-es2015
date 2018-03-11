@@ -138,7 +138,8 @@ class StickyNote extends HTMLElement {
     this.parentNode.removeChild(this);
   }
 }
-
+{
+}
 // Initial content of the element.
 StickyNote.TEMPLATE = `
 <div class="message"></div>
