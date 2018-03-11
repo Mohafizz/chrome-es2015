@@ -94,11 +94,7 @@ window.addEventListener("load", () => new StickyNotesApp());
 class StickyNote extends HTMLElement {
   // Fires when an instance of the element is created.
   createdCallback() {
-    StickyNote.CLASSES.forEach(
-      function(klass) {
-        this.classList.add(klass);
-      }.bind(this)
-    );
+    this.classList.add(...StickyNote.CLASSES);
     this.innerHTML = StickyNote.TEMPLATE;
     this.messageElement = this.querySelector(".message");
     this.dateElement = this.querySelector(".date");
