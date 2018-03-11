@@ -105,10 +105,11 @@ class StickyNote extends HTMLElement {
   attributeChangedCallback(attributeName) {
     // We display/update the created date message if the id changes.
     if (attributeName == "id") {
+      let date;
       if (this.id) {
-        let date = new Date(parseInt(this.id));
+        date = new Date(parseInt(this.id));
       } else {
-        let date = new Date();
+        date = new Date();
       }
       // Format the date
       let dateFormatterOptions = { day: "numeric", month: "short" };
