@@ -41,7 +41,7 @@ class StickyNotesApp {
   }
 
   // Saves a new sticky note on localStorage.
-  saveNote = function() {
+  saveNote() {
     if (this.noteMessageInput.value) {
       let key = Date.now().toString();
       localStorage.setItem(key, this.noteMessageInput.value);
@@ -49,17 +49,17 @@ class StickyNotesApp {
       StickyNotesApp.resetMaterialTextfield(this.noteMessageInput);
       this.toggleButton();
     }
-  };
+  }
 
   // Resets the given MaterialTextField.
-  static resetMaterialTextfield = function(element) {
+  static resetMaterialTextfield(element) {
     element.value = "";
     element.parentNode.MaterialTextfield.boundUpdateClassesHandler();
     element.blur();
-  };
+  }
 
   // Creates/updates/deletes a note in the UI.
-  displayNote = function(key, message) {
+  displayNote(key, message) {
     let note = document.getElementById(key);
     // If no element with the given key exists we create a new note.
     if (!note) {
@@ -75,16 +75,16 @@ class StickyNotesApp {
       return note.deleteNote();
     }
     note.setMessage(message);
-  };
+  }
 
   // Enables or disables the submit button depending on the values of the input field.
-  toggleButton = function() {
+  toggleButton() {
     if (this.noteMessageInput.value) {
       this.addNoteButton.removeAttribute("disabled");
     } else {
       this.addNoteButton.setAttribute("disabled", "true");
     }
-  };
+  }
 }
 
 // On load start the app.
@@ -119,8 +119,6 @@ class StickyNote extends HTMLElement {
 
       this.dateElement.textContent = `Created on ${shortDate}`;
     }
-    let month = StickyNote.MONTHS[date.getMonth()];
-    this.dateElement.textContent = `Created on ${month} ${date.getDate()}`;
   }
 
   // Sets the message of the note.
