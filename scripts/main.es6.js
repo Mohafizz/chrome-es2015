@@ -30,7 +30,7 @@ class StickyNotesApp {
     this.noteMessageInput.addEventListener("keyup", () => this.toggleButton());
 
     // Loads all the notes.
-    for (var key in localStorage) {
+    for (let key in localStorage) {
       this.displayNote(key, localStorage[key]);
     }
 
@@ -43,7 +43,7 @@ class StickyNotesApp {
   // Saves a new sticky note on localStorage.
   saveNote = function() {
     if (this.noteMessageInput.value) {
-      var key = Date.now().toString();
+      let key = Date.now().toString();
       localStorage.setItem(key, this.noteMessageInput.value);
       this.displayNote(key, this.noteMessageInput.value);
       StickyNotesApp.resetMaterialTextfield(this.noteMessageInput);
@@ -60,7 +60,7 @@ class StickyNotesApp {
 
   // Creates/updates/deletes a note in the UI.
   displayNote = function(key, message) {
-    var note = document.getElementById(key);
+    let note = document.getElementById(key);
     // If no element with the given key exists we create a new note.
     if (!note) {
       note = document.createElement("sticky-note");
@@ -110,14 +110,13 @@ class StickyNote extends HTMLElement {
     // We display/update the created date message if the id changes.
     if (attributeName == "id") {
       if (this.id) {
-        var date = new Date(parseInt(this.id));
+        let date = new Date(parseInt(this.id));
       } else {
-        var date = new Date();
+        let date = new Date();
       }
-      var month = StickyNote.MONTHS[date.getMonth()];
-      this.dateElement.textContent =
-        "Created on " + month + " " + date.getDate();
     }
+    let month = StickyNote.MONTHS[date.getMonth()];
+    this.dateElement.textContent = "Created on " + month + " " + date.getDate();
   }
 
   // Sets the message of the note.
